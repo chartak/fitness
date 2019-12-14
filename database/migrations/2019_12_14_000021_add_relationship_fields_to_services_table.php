@@ -12,6 +12,10 @@ class AddRelationshipFieldsToServicesTable extends Migration
             $table->unsignedInteger('branch_id');
 
             $table->foreign('branch_id', 'branch_fk_707703')->references('id')->on('contact_contacts');
+
+            $table->unsignedInteger('team_id')->nullable();
+
+            $table->foreign('team_id', 'team_fk_730989')->references('id')->on('teams');
         });
     }
 }

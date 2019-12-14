@@ -20,7 +20,7 @@ class TreainerApiController extends Controller
     {
         abort_if(Gate::denies('treainer_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new TreainerResource(Treainer::with(['types', 'branches'])->get());
+        return new TreainerResource(Treainer::with(['types', 'branches', 'team'])->get());
     }
 
     public function store(StoreTreainerRequest $request)
@@ -42,7 +42,7 @@ class TreainerApiController extends Controller
     {
         abort_if(Gate::denies('treainer_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new TreainerResource($treainer->load(['types', 'branches']));
+        return new TreainerResource($treainer->load(['types', 'branches', 'team']));
     }
 
     public function update(UpdateTreainerRequest $request, Treainer $treainer)

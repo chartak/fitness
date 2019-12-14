@@ -217,21 +217,6 @@
                         </a>
                     </li>
                     <li role="presentation">
-                        <a href="#branch_content_categories" aria-controls="branch_content_categories" role="tab" data-toggle="tab">
-                            {{ trans('cruds.contentCategory.title') }}
-                        </a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#branch_content_tags" aria-controls="branch_content_tags" role="tab" data-toggle="tab">
-                            {{ trans('cruds.contentTag.title') }}
-                        </a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#branch_content_pages" aria-controls="branch_content_pages" role="tab" data-toggle="tab">
-                            {{ trans('cruds.contentPage.title') }}
-                        </a>
-                    </li>
-                    <li role="presentation">
                         <a href="#branch_treainers" aria-controls="branch_treainers" role="tab" data-toggle="tab">
                             {{ trans('cruds.treainer.title') }}
                         </a>
@@ -246,15 +231,6 @@
                     </div>
                     <div class="tab-pane" role="tabpanel" id="branch_stocks">
                         @includeIf('admin.contactContacts.relationships.branchStocks', ['stocks' => $contactContact->branchStocks])
-                    </div>
-                    <div class="tab-pane" role="tabpanel" id="branch_content_categories">
-                        @includeIf('admin.contactContacts.relationships.branchContentCategories', ['contentCategories' => $contactContact->branchContentCategories])
-                    </div>
-                    <div class="tab-pane" role="tabpanel" id="branch_content_tags">
-                        @includeIf('admin.contactContacts.relationships.branchContentTags', ['contentTags' => $contactContact->branchContentTags])
-                    </div>
-                    <div class="tab-pane" role="tabpanel" id="branch_content_pages">
-                        @includeIf('admin.contactContacts.relationships.branchContentPages', ['contentPages' => $contactContact->branchContentPages])
                     </div>
                     <div class="tab-pane" role="tabpanel" id="branch_treainers">
                         @includeIf('admin.contactContacts.relationships.branchTreainers', ['treainers' => $contactContact->branchTreainers])

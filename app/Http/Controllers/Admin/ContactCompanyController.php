@@ -17,7 +17,7 @@ class ContactCompanyController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $query = ContactCompany::query()->select(sprintf('%s.*', (new ContactCompany)->table));
+            $query = ContactCompany::with(['team'])->select(sprintf('%s.*', (new ContactCompany)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -80,6 +80,8 @@ class ContactCompanyController extends Controller
     {
         abort_if(Gate::denies('contact_company_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $contactCompany->load('team');
+
         return view('admin.contactCompanies.edit', compact('contactCompany'));
     }
 
@@ -94,7 +96,7 @@ class ContactCompanyController extends Controller
     {
         abort_if(Gate::denies('contact_company_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $contactCompany->load('companyContactContacts');
+        $contactCompany->load('team', 'companyContactContacts');
 
         return view('admin.contactCompanies.show', compact('contactCompany'));
     }

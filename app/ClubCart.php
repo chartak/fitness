@@ -2,12 +2,13 @@
 
 namespace App;
 
+use App\Traits\MultiTenantModelTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ClubCart extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, MultiTenantModelTrait;
 
     public $table = 'club_carts';
 
@@ -30,6 +31,7 @@ class ClubCart extends Model
         'timeto',
         'status',
         'year_to',
+        'team_id',
         'timefrom',
         'duration',
         'year_from',
@@ -85,5 +87,10 @@ class ClubCart extends Model
     public function branch()
     {
         return $this->belongsTo(ContactContact::class, 'branch_id');
+    }
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class, 'team_id');
     }
 }

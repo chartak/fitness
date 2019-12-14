@@ -49,46 +49,13 @@
                                 </a>
                             </li>
                         @endcan
-                    </ul>
-                </li>
-            @endcan
-            @can('content_management_access')
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa-fw fas fa-book">
-
-                        </i>
-                        <span>{{ trans('cruds.contentManagement.title') }}</span>
-                        <span class="pull-right-container"><i class="fa fa-fw fa-angle-left pull-right"></i></span>
-                    </a>
-                    <ul class="treeview-menu">
-                        @can('content_category_access')
-                            <li class="{{ request()->is('admin/content-categories') || request()->is('admin/content-categories/*') ? 'active' : '' }}">
-                                <a href="{{ route("admin.content-categories.index") }}">
-                                    <i class="fa-fw fas fa-folder">
+                        @can('team_access')
+                            <li class="{{ request()->is('admin/teams') || request()->is('admin/teams/*') ? 'active' : '' }}">
+                                <a href="{{ route("admin.teams.index") }}">
+                                    <i class="fa-fw fas fa-users">
 
                                     </i>
-                                    <span>{{ trans('cruds.contentCategory.title') }}</span>
-                                </a>
-                            </li>
-                        @endcan
-                        @can('content_tag_access')
-                            <li class="{{ request()->is('admin/content-tags') || request()->is('admin/content-tags/*') ? 'active' : '' }}">
-                                <a href="{{ route("admin.content-tags.index") }}">
-                                    <i class="fa-fw fas fa-tags">
-
-                                    </i>
-                                    <span>{{ trans('cruds.contentTag.title') }}</span>
-                                </a>
-                            </li>
-                        @endcan
-                        @can('content_page_access')
-                            <li class="{{ request()->is('admin/content-pages') || request()->is('admin/content-pages/*') ? 'active' : '' }}">
-                                <a href="{{ route("admin.content-pages.index") }}">
-                                    <i class="fa-fw fas fa-file">
-
-                                    </i>
-                                    <span>{{ trans('cruds.contentPage.title') }}</span>
+                                    <span>{{ trans('cruds.team.title') }}</span>
                                 </a>
                             </li>
                         @endcan

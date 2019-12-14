@@ -17,7 +17,7 @@ class PermissionsApiController extends Controller
     {
         abort_if(Gate::denies('permission_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new PermissionResource(Permission::all());
+        return new PermissionResource(Permission::with(['team'])->get());
     }
 
     public function store(StorePermissionRequest $request)
@@ -33,7 +33,7 @@ class PermissionsApiController extends Controller
     {
         abort_if(Gate::denies('permission_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new PermissionResource($permission);
+        return new PermissionResource($permission->load(['team']));
     }
 
     public function update(UpdatePermissionRequest $request, Permission $permission)

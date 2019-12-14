@@ -12,6 +12,10 @@ class AddRelationshipFieldsToStocksTable extends Migration
             $table->unsignedInteger('branch_id');
 
             $table->foreign('branch_id', 'branch_fk_707708')->references('id')->on('contact_contacts');
+
+            $table->unsignedInteger('team_id')->nullable();
+
+            $table->foreign('team_id', 'team_fk_730995')->references('id')->on('teams');
         });
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Traits\MultiTenantModelTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
@@ -10,7 +11,7 @@ use Spatie\MediaLibrary\Models\Media;
 
 class Service extends Model implements HasMedia
 {
-    use SoftDeletes, HasMediaTrait;
+    use SoftDeletes, MultiTenantModelTrait, HasMediaTrait;
 
     public $table = 'services';
 
@@ -28,6 +29,7 @@ class Service extends Model implements HasMedia
         'name',
         'status',
         'orderby',
+        'team_id',
         'branch_id',
         'created_at',
         'updated_at',
@@ -54,5 +56,10 @@ class Service extends Model implements HasMedia
     public function branch()
     {
         return $this->belongsTo(ContactContact::class, 'branch_id');
+    }
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class, 'team_id');
     }
 }

@@ -12,6 +12,10 @@ class AddRelationshipFieldsToClubCartsTable extends Migration
             $table->unsignedInteger('branch_id');
 
             $table->foreign('branch_id', 'branch_fk_707706')->references('id')->on('contact_contacts');
+
+            $table->unsignedInteger('team_id')->nullable();
+
+            $table->foreign('team_id', 'team_fk_730985')->references('id')->on('teams');
         });
     }
 }

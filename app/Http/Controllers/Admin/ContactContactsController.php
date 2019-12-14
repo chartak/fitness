@@ -21,7 +21,7 @@ class ContactContactsController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $query = ContactContact::with(['company'])->select(sprintf('%s.*', (new ContactContact)->table));
+            $query = ContactContact::with(['company', 'team'])->select(sprintf('%s.*', (new ContactContact)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -158,7 +158,7 @@ class ContactContactsController extends Controller
 
         $companies = ContactCompany::all()->pluck('company_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $contactContact->load('company');
+        $contactContact->load('company', 'team');
 
         return view('admin.contactContacts.edit', compact('companies', 'contactContact'));
     }
@@ -190,7 +190,7 @@ class ContactContactsController extends Controller
     {
         abort_if(Gate::denies('contact_contact_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $contactContact->load('company', 'branchServices', 'branchClubCarts', 'branchStocks', 'branchContentCategories', 'branchContentTags', 'branchContentPages', 'branchTreainers');
+        $contactContact->load('company', 'team', 'branchServices', 'branchClubCarts', 'branchStocks', 'branchTreainers');
 
         return view('admin.contactContacts.show', compact('contactContact'));
     }

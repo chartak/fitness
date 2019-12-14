@@ -18,7 +18,7 @@ class ClubCartsController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $query = ClubCart::with(['branch'])->select(sprintf('%s.*', (new ClubCart)->table));
+            $query = ClubCart::with(['branch', 'team'])->select(sprintf('%s.*', (new ClubCart)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -97,7 +97,7 @@ class ClubCartsController extends Controller
 
         $branches = ContactContact::all()->pluck('branch_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $clubCart->load('branch');
+        $clubCart->load('branch', 'team');
 
         return view('admin.clubCarts.edit', compact('branches', 'clubCart'));
     }
@@ -113,7 +113,7 @@ class ClubCartsController extends Controller
     {
         abort_if(Gate::denies('club_cart_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $clubCart->load('branch');
+        $clubCart->load('branch', 'team');
 
         return view('admin.clubCarts.show', compact('clubCart'));
     }

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Traits\MultiTenantModelTrait;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -11,7 +12,7 @@ use Spatie\MediaLibrary\Models\Media;
 
 class Stock extends Model implements HasMedia
 {
-    use SoftDeletes, HasMediaTrait;
+    use SoftDeletes, MultiTenantModelTrait, HasMediaTrait;
 
     public $table = 'stocks';
 
@@ -31,6 +32,7 @@ class Stock extends Model implements HasMedia
         'name',
         'status',
         'orderby',
+        'team_id',
         'end_date',
         'discounts',
         'branch_id',
@@ -80,5 +82,10 @@ class Stock extends Model implements HasMedia
     public function branch()
     {
         return $this->belongsTo(ContactContact::class, 'branch_id');
+    }
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class, 'team_id');
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Traits\MultiTenantModelTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
@@ -10,7 +11,7 @@ use Spatie\MediaLibrary\Models\Media;
 
 class Treainer extends Model implements HasMedia
 {
-    use SoftDeletes, HasMediaTrait;
+    use SoftDeletes, MultiTenantModelTrait, HasMediaTrait;
 
     public $table = 'treainers';
 
@@ -25,6 +26,7 @@ class Treainer extends Model implements HasMedia
     ];
 
     protected $fillable = [
+        'team_id',
         'fullname',
         'created_at',
         'updated_at',
@@ -57,5 +59,10 @@ class Treainer extends Model implements HasMedia
     public function branches()
     {
         return $this->belongsToMany(ContactContact::class);
+    }
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class, 'team_id');
     }
 }

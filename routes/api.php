@@ -10,16 +10,6 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Users
     Route::apiResource('users', 'UsersApiController');
 
-    // Content Categories
-    Route::apiResource('content-categories', 'ContentCategoryApiController');
-
-    // Content Tags
-    Route::apiResource('content-tags', 'ContentTagApiController');
-
-    // Content Pages
-    Route::post('content-pages/media', 'ContentPageApiController@storeMedia')->name('content-pages.storeMedia');
-    Route::apiResource('content-pages', 'ContentPageApiController');
-
     // Stocks
     Route::post('stocks/media', 'StocksApiController@storeMedia')->name('stocks.storeMedia');
     Route::apiResource('stocks', 'StocksApiController');
@@ -44,4 +34,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Contact Contacts
     Route::post('contact-contacts/media', 'ContactContactsApiController@storeMedia')->name('contact-contacts.storeMedia');
     Route::apiResource('contact-contacts', 'ContactContactsApiController');
+
+    // Teams
+    Route::apiResource('teams', 'TeamApiController');
 });

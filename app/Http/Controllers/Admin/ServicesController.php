@@ -21,7 +21,7 @@ class ServicesController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $query = Service::with(['branch'])->select(sprintf('%s.*', (new Service)->table));
+            $query = Service::with(['branch', 'team'])->select(sprintf('%s.*', (new Service)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -105,7 +105,7 @@ class ServicesController extends Controller
 
         $branches = ContactContact::all()->pluck('branch_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $service->load('branch');
+        $service->load('branch', 'team');
 
         return view('admin.services.edit', compact('branches', 'service'));
     }
@@ -137,7 +137,7 @@ class ServicesController extends Controller
     {
         abort_if(Gate::denies('service_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $service->load('branch');
+        $service->load('branch', 'team');
 
         return view('admin.services.show', compact('service'));
     }

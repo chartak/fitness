@@ -22,7 +22,7 @@ class TreainerController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $query = Treainer::with(['types', 'branches'])->select(sprintf('%s.*', (new Treainer)->table));
+            $query = Treainer::with(['types', 'branches', 'team'])->select(sprintf('%s.*', (new Treainer)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -119,7 +119,7 @@ class TreainerController extends Controller
 
         $branches = ContactContact::all()->pluck('branch_name', 'id');
 
-        $treainer->load('types', 'branches');
+        $treainer->load('types', 'branches', 'team');
 
         return view('admin.treainers.edit', compact('types', 'branches', 'treainer'));
     }
@@ -145,7 +145,7 @@ class TreainerController extends Controller
     {
         abort_if(Gate::denies('treainer_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $treainer->load('types', 'branches');
+        $treainer->load('types', 'branches', 'team');
 
         return view('admin.treainers.show', compact('treainer'));
     }

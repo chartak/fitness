@@ -51,6 +51,18 @@
                             @endif
                             <span class="help-block">{{ trans('cruds.user.fields.roles_helper') }}</span>
                         </div>
+                        <div class="form-group {{ $errors->has('team') ? 'has-error' : '' }}">
+                            <label for="team_id">{{ trans('cruds.user.fields.team') }}</label>
+                            <select class="form-control select2" name="team_id" id="team_id">
+                                @foreach($teams as $id => $team)
+                                    <option value="{{ $id }}" {{ old('team_id') == $id ? 'selected' : '' }}>{{ $team }}</option>
+                                @endforeach
+                            </select>
+                            @if($errors->has('team_id'))
+                                <span class="help-block" role="alert">{{ $errors->first('team_id') }}</span>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.user.fields.team_helper') }}</span>
+                        </div>
                         <div class="form-group">
                             <button class="btn btn-danger" type="submit">
                                 {{ trans('global.save') }}
