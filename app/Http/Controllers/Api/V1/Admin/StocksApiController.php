@@ -20,7 +20,7 @@ class StocksApiController extends Controller
     {
         abort_if(Gate::denies('stock_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new StockResource(Stock::with(['branch'])->get());
+        return new StockResource(Stock::with(['branch', 'team'])->get());
     }
 
     public function store(StoreStockRequest $request)
@@ -40,7 +40,7 @@ class StocksApiController extends Controller
     {
         abort_if(Gate::denies('stock_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new StockResource($stock->load(['branch']));
+        return new StockResource($stock->load(['branch', 'team']));
     }
 
     public function update(UpdateStockRequest $request, Stock $stock)

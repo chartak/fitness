@@ -17,7 +17,7 @@ class TypeOfTrainerController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $query = TypeOfTrainer::query()->select(sprintf('%s.*', (new TypeOfTrainer)->table));
+            $query = TypeOfTrainer::with(['team'])->select(sprintf('%s.*', (new TypeOfTrainer)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -74,6 +74,8 @@ class TypeOfTrainerController extends Controller
     {
         abort_if(Gate::denies('type_of_trainer_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $typeOfTrainer->load('team');
+
         return view('admin.typeOfTrainers.edit', compact('typeOfTrainer'));
     }
 
@@ -88,7 +90,7 @@ class TypeOfTrainerController extends Controller
     {
         abort_if(Gate::denies('type_of_trainer_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $typeOfTrainer->load('typeTreainers');
+        $typeOfTrainer->load('team', 'typeTreainers');
 
         return view('admin.typeOfTrainers.show', compact('typeOfTrainer'));
     }

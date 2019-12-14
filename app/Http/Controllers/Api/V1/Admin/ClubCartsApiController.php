@@ -17,7 +17,7 @@ class ClubCartsApiController extends Controller
     {
         abort_if(Gate::denies('club_cart_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new ClubCartResource(ClubCart::with(['branch'])->get());
+        return new ClubCartResource(ClubCart::with(['branch', 'team'])->get());
     }
 
     public function store(StoreClubCartRequest $request)
@@ -33,7 +33,7 @@ class ClubCartsApiController extends Controller
     {
         abort_if(Gate::denies('club_cart_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new ClubCartResource($clubCart->load(['branch']));
+        return new ClubCartResource($clubCart->load(['branch', 'team']));
     }
 
     public function update(UpdateClubCartRequest $request, ClubCart $clubCart)

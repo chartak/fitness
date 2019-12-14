@@ -12,6 +12,10 @@ class AddRelationshipFieldsToContactContactsTable extends Migration
             $table->unsignedInteger('company_id')->nullable();
 
             $table->foreign('company_id', 'company_fk_707543')->references('id')->on('contact_companies');
+
+            $table->unsignedInteger('team_id')->nullable();
+
+            $table->foreign('team_id', 'team_fk_730980')->references('id')->on('teams');
         });
     }
 }

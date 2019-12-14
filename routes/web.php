@@ -26,19 +26,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
     Route::resource('users', 'UsersController');
 
-    // Content Categories
-    Route::delete('content-categories/destroy', 'ContentCategoryController@massDestroy')->name('content-categories.massDestroy');
-    Route::resource('content-categories', 'ContentCategoryController');
-
-    // Content Tags
-    Route::delete('content-tags/destroy', 'ContentTagController@massDestroy')->name('content-tags.massDestroy');
-    Route::resource('content-tags', 'ContentTagController');
-
-    // Content Pages
-    Route::delete('content-pages/destroy', 'ContentPageController@massDestroy')->name('content-pages.massDestroy');
-    Route::post('content-pages/media', 'ContentPageController@storeMedia')->name('content-pages.storeMedia');
-    Route::resource('content-pages', 'ContentPageController');
-
     // Stocks
     Route::delete('stocks/destroy', 'StocksController@massDestroy')->name('stocks.massDestroy');
     Route::post('stocks/media', 'StocksController@storeMedia')->name('stocks.storeMedia');
@@ -70,4 +57,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('contact-contacts/destroy', 'ContactContactsController@massDestroy')->name('contact-contacts.massDestroy');
     Route::post('contact-contacts/media', 'ContactContactsController@storeMedia')->name('contact-contacts.storeMedia');
     Route::resource('contact-contacts', 'ContactContactsController');
+
+    // Teams
+    Route::delete('teams/destroy', 'TeamController@massDestroy')->name('teams.massDestroy');
+    Route::resource('teams', 'TeamController');
 });

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Traits\MultiTenantModelTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
@@ -10,7 +11,7 @@ use Spatie\MediaLibrary\Models\Media;
 
 class ContactContact extends Model implements HasMedia
 {
-    use SoftDeletes, HasMediaTrait;
+    use SoftDeletes, MultiTenantModelTrait, HasMediaTrait;
 
     public $table = 'contact_contacts';
 
@@ -26,19 +27,20 @@ class ContactContact extends Model implements HasMedia
     ];
 
     protected $fillable = [
+        'team_id',
         'latitude',
         'longitude',
         'open_hour',
-        'company_id',
         'contact_vk',
+        'deleted_at',
         'updated_at',
         'created_at',
         'close_hour',
+        'company_id',
         'contact_tw',
-        'deleted_at',
         'contact_fb',
-        'contact_ins',
         'branch_name',
+        'contact_ins',
         'description',
         'contact_city',
         'contact_skype',
@@ -66,21 +68,6 @@ class ContactContact extends Model implements HasMedia
     public function branchStocks()
     {
         return $this->hasMany(Stock::class, 'branch_id', 'id');
-    }
-
-    public function branchContentCategories()
-    {
-        return $this->hasMany(ContentCategory::class, 'branch_id', 'id');
-    }
-
-    public function branchContentTags()
-    {
-        return $this->hasMany(ContentTag::class, 'branch_id', 'id');
-    }
-
-    public function branchContentPages()
-    {
-        return $this->hasMany(ContentPage::class, 'branch_id', 'id');
     }
 
     public function branchTreainers()
@@ -115,5 +102,10 @@ class ContactContact extends Model implements HasMedia
         }
 
         return $file;
+    }
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class, 'team_id');
     }
 }

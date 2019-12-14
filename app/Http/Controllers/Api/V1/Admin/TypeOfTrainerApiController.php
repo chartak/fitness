@@ -17,7 +17,7 @@ class TypeOfTrainerApiController extends Controller
     {
         abort_if(Gate::denies('type_of_trainer_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new TypeOfTrainerResource(TypeOfTrainer::all());
+        return new TypeOfTrainerResource(TypeOfTrainer::with(['team'])->get());
     }
 
     public function store(StoreTypeOfTrainerRequest $request)
@@ -33,7 +33,7 @@ class TypeOfTrainerApiController extends Controller
     {
         abort_if(Gate::denies('type_of_trainer_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new TypeOfTrainerResource($typeOfTrainer);
+        return new TypeOfTrainerResource($typeOfTrainer->load(['team']));
     }
 
     public function update(UpdateTypeOfTrainerRequest $request, TypeOfTrainer $typeOfTrainer)

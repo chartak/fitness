@@ -74,211 +74,167 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => '17',
-                'title' => 'content_management_access',
-            ],
-            [
-                'id'    => '18',
-                'title' => 'content_category_create',
-            ],
-            [
-                'id'    => '19',
-                'title' => 'content_category_edit',
-            ],
-            [
-                'id'    => '20',
-                'title' => 'content_category_show',
-            ],
-            [
-                'id'    => '21',
-                'title' => 'content_category_delete',
-            ],
-            [
-                'id'    => '22',
-                'title' => 'content_category_access',
-            ],
-            [
-                'id'    => '23',
-                'title' => 'content_tag_create',
-            ],
-            [
-                'id'    => '24',
-                'title' => 'content_tag_edit',
-            ],
-            [
-                'id'    => '25',
-                'title' => 'content_tag_show',
-            ],
-            [
-                'id'    => '26',
-                'title' => 'content_tag_delete',
-            ],
-            [
-                'id'    => '27',
-                'title' => 'content_tag_access',
-            ],
-            [
-                'id'    => '28',
-                'title' => 'content_page_create',
-            ],
-            [
-                'id'    => '29',
-                'title' => 'content_page_edit',
-            ],
-            [
-                'id'    => '30',
-                'title' => 'content_page_show',
-            ],
-            [
-                'id'    => '31',
-                'title' => 'content_page_delete',
-            ],
-            [
-                'id'    => '32',
-                'title' => 'content_page_access',
-            ],
-            [
-                'id'    => '33',
                 'title' => 'stock_create',
             ],
             [
-                'id'    => '34',
+                'id'    => '18',
                 'title' => 'stock_edit',
             ],
             [
-                'id'    => '35',
+                'id'    => '19',
                 'title' => 'stock_show',
             ],
             [
-                'id'    => '36',
+                'id'    => '20',
                 'title' => 'stock_delete',
             ],
             [
-                'id'    => '37',
+                'id'    => '21',
                 'title' => 'stock_access',
             ],
             [
-                'id'    => '38',
+                'id'    => '22',
                 'title' => 'type_of_trainer_create',
             ],
             [
-                'id'    => '39',
+                'id'    => '23',
                 'title' => 'type_of_trainer_edit',
             ],
             [
-                'id'    => '40',
+                'id'    => '24',
                 'title' => 'type_of_trainer_show',
             ],
             [
-                'id'    => '41',
+                'id'    => '25',
                 'title' => 'type_of_trainer_delete',
             ],
             [
-                'id'    => '42',
+                'id'    => '26',
                 'title' => 'type_of_trainer_access',
             ],
             [
-                'id'    => '43',
+                'id'    => '27',
                 'title' => 'treainer_create',
             ],
             [
-                'id'    => '44',
+                'id'    => '28',
                 'title' => 'treainer_edit',
             ],
             [
-                'id'    => '45',
+                'id'    => '29',
                 'title' => 'treainer_show',
             ],
             [
-                'id'    => '46',
+                'id'    => '30',
                 'title' => 'treainer_delete',
             ],
             [
-                'id'    => '47',
+                'id'    => '31',
                 'title' => 'treainer_access',
             ],
             [
-                'id'    => '48',
+                'id'    => '32',
                 'title' => 'club_cart_create',
             ],
             [
-                'id'    => '49',
+                'id'    => '33',
                 'title' => 'club_cart_edit',
             ],
             [
-                'id'    => '50',
+                'id'    => '34',
                 'title' => 'club_cart_show',
             ],
             [
-                'id'    => '51',
+                'id'    => '35',
                 'title' => 'club_cart_delete',
             ],
             [
-                'id'    => '52',
+                'id'    => '36',
                 'title' => 'club_cart_access',
             ],
             [
-                'id'    => '53',
+                'id'    => '37',
                 'title' => 'service_create',
             ],
             [
-                'id'    => '54',
+                'id'    => '38',
                 'title' => 'service_edit',
             ],
             [
-                'id'    => '55',
+                'id'    => '39',
                 'title' => 'service_show',
             ],
             [
-                'id'    => '56',
+                'id'    => '40',
                 'title' => 'service_delete',
             ],
             [
-                'id'    => '57',
+                'id'    => '41',
                 'title' => 'service_access',
             ],
             [
-                'id'    => '58',
+                'id'    => '42',
                 'title' => 'contact_management_access',
             ],
             [
-                'id'    => '59',
+                'id'    => '43',
                 'title' => 'contact_company_create',
             ],
             [
-                'id'    => '60',
+                'id'    => '44',
                 'title' => 'contact_company_edit',
             ],
             [
-                'id'    => '61',
+                'id'    => '45',
                 'title' => 'contact_company_show',
             ],
             [
-                'id'    => '62',
+                'id'    => '46',
                 'title' => 'contact_company_delete',
             ],
             [
-                'id'    => '63',
+                'id'    => '47',
                 'title' => 'contact_company_access',
             ],
             [
-                'id'    => '64',
+                'id'    => '48',
                 'title' => 'contact_contact_create',
             ],
             [
-                'id'    => '65',
+                'id'    => '49',
                 'title' => 'contact_contact_edit',
             ],
             [
-                'id'    => '66',
+                'id'    => '50',
                 'title' => 'contact_contact_show',
             ],
             [
-                'id'    => '67',
+                'id'    => '51',
                 'title' => 'contact_contact_delete',
             ],
             [
-                'id'    => '68',
+                'id'    => '52',
                 'title' => 'contact_contact_access',
+            ],
+            [
+                'id'    => '53',
+                'title' => 'team_create',
+            ],
+            [
+                'id'    => '54',
+                'title' => 'team_edit',
+            ],
+            [
+                'id'    => '55',
+                'title' => 'team_show',
+            ],
+            [
+                'id'    => '56',
+                'title' => 'team_delete',
+            ],
+            [
+                'id'    => '57',
+                'title' => 'team_access',
             ],
         ];
 

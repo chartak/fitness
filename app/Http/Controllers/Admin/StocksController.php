@@ -21,7 +21,7 @@ class StocksController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $query = Stock::with(['branch'])->select(sprintf('%s.*', (new Stock)->table));
+            $query = Stock::with(['branch', 'team'])->select(sprintf('%s.*', (new Stock)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -107,7 +107,7 @@ class StocksController extends Controller
 
         $branches = ContactContact::all()->pluck('branch_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $stock->load('branch');
+        $stock->load('branch', 'team');
 
         return view('admin.stocks.edit', compact('branches', 'stock'));
     }
@@ -131,7 +131,7 @@ class StocksController extends Controller
     {
         abort_if(Gate::denies('stock_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $stock->load('branch');
+        $stock->load('branch', 'team');
 
         return view('admin.stocks.show', compact('stock'));
     }
